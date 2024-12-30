@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf2a2rdts1ejy"]
+[gd_scene load_steps=3 format=3 uid="uid://bf2a2rdts1ejy"]
 
 [ext_resource type="PackedScene" uid="uid://1fqa8fjddc5f" path="res://sprite_2d.tscn" id="1_vmj0t"]
+[ext_resource type="Script" path="res://MyNode2D.cs" id="1_ywe74"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ywe74")
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_vmj0t")]
 position = Vector2(439, 292)
 
 [node name="Timer" type="Timer" parent="Sprite2D"]
-wait_time = 1.437
+wait_time = 3.0
 autostart = true
 
 [node name="Button" type="Button" parent="."]

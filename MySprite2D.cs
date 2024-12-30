@@ -1,9 +1,11 @@
 using Godot;
 using System;
+using static MyNode2D;
 
 public partial class MySprite2D : Sprite2D
 {
 	private int _speed = 400;
+	private int _health = 100;
 	private float _angularSpeed = Mathf.Pi;
 	private void OnButtonPressed()	
 	{
@@ -20,8 +22,15 @@ public partial class MySprite2D : Sprite2D
 	{
 		Visible = !Visible;
 	}
-    
-	public override void _Process(double delta)
+	
+	public void TakeDamage(int amount)
+	{
+		int oldHealth = _health;
+		_health -= amount;
+		EmitSignal(nameof(MyNode2D), oldHealth, _health);
+	}
+
+    public override void _Process(double delta)
 	{
 		Rotation += _angularSpeed * (float)delta;
 		var velocity = Vector2.Up.Rotated(Rotation) * _speed;
